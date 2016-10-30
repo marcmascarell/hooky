@@ -15,18 +15,18 @@ Installation
 Usage
 --------------
 
-`somewhere.php`
+`MyHook.php`
 ```php
-
 class MyHook implements \Mascame\Hooky\HookContract {
+
     public function handle($data, $next)
     {
         $data = 'test';
 
         return $next($data);
     }
+    
 }
-
 ```
 
 `somewhere.php`
