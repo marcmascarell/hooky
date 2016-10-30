@@ -1,0 +1,28 @@
+{
+    "name": "mascame/hooky",
+    "description": "",
+    "homepage": "https://github.com/marcmascarell/hooky",
+    "keywords": [
+        "hooks",
+        "hook"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Mascarell",
+            "email": "marcmascarell@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "codeception/codeception": "2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mascame\\Hooky\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
