@@ -1,22 +1,45 @@
 Hooky
 =========
 
-[![license](https://img.shields.io/github/license/marcmascarell/hooky.svg?maxAge=2592000?style=plastic)](https://github.com/marcmascarell/arrayer)
+[![Packagist](https://img.shields.io/packagist/v/mascame/hooky.svg?maxAge=2592000?style=plastic)](https://packagist.org/packages/mascame/hooky)
+[![Travis](https://img.shields.io/travis/marcmascarell/hooky.svg?maxAge=2592000?style=plastic)](https://travis-ci.org/marcmascarell/hooky)
+[![license](https://img.shields.io/github/license/marcmascarell/hooky.svg?maxAge=2592000?style=plastic)](https://github.com/marcmascarell/hooky)
 
 Simple hooks.
 
 Installation
 --------------
 
-Require this package in your composer.json and run composer update:
-
 `composer require mascame/hooky`
 
 Usage
 --------------
 
+`somewhere.php`
 ```php
-// Todo
+
+class MyHook implements \Mascame\Hooky\HookContract {
+    public function handle($data, $next)
+    {
+        $data = 'test';
+
+        return $next($data);
+    }
+}
+
+```
+
+`somewhere.php`
+```php
+
+$hook = new \Mascame\Hooky\Hook();
+$hookName = 'bar';
+$someData = 'foo'; // This will be sent to handlers, where they can manipulate it
+
+$hook->to($hookName, [MyHook::class, AnotherHook::class]);
+
+$data = $hook->fire($hookName, $someData);
+
 ```
 
 Contributing
