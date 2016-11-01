@@ -1,4 +1,6 @@
-<?php namespace Mascame\Hooky;
+<?php
+
+namespace Mascame\Hooky;
 
 use Illuminate\Support\Collection;
 
@@ -10,7 +12,7 @@ class Hook
     protected $hooks = [];
 
     /**
-     * Returns all attached hooks until this moment
+     * Returns all attached hooks until this moment.
      *
      * @return array
      */
@@ -78,17 +80,19 @@ class Hook
     {
         $iterator->next();
 
-        return function($data) use ($iterator) {
+        return function ($data) use ($iterator) {
             $nextHandler = $iterator->current();
 
-            if (! $nextHandler) return $data;
+            if (! $nextHandler) {
+                return $data;
+            }
 
             return $this->dispatchHandler($nextHandler, $data, $iterator);
         };
     }
 
     /**
-     * Flattens the handlers because $handlers can be provided as array
+     * Flattens the handlers because $handlers can be provided as array.
      *
      * @param $hook
      * @return array
@@ -112,7 +116,7 @@ class Hook
     }
 
     /**
-     * Get the hook key name
+     * Get the hook key name.
      *
      * @param $hook
      * @return mixed
@@ -147,5 +151,4 @@ class Hook
             }
         }, []);
     }
-
 }
