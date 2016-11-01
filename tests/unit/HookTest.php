@@ -80,7 +80,7 @@ class HookTest extends \Codeception\Test\Unit
             [
                 'zero',
                 'second',
-                'first'
+                'first',
             ]
         );
     }

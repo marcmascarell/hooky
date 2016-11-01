@@ -1,14 +1,14 @@
-<?php namespace Mascame\Hooky;
+<?php
+
+namespace Mascame\Hooky;
 
 /**
- * Leverages Laravel's Event system
+ * Leverages Laravel's Event system.
  *
  * Class LaravelHook
- * @package Mascame\Artificer\Hooks
  */
 class LaravelHook extends Hook
 {
-
     /**
      * @var string
      */
@@ -18,14 +18,15 @@ class LaravelHook extends Hook
      * @param string $hook
      * @param string|array $handlers
      */
-    public function to($hook, $handlers) {
-        \Event::listen($this->key($hook), function() use ($handlers) {
+    public function to($hook, $handlers)
+    {
+        \Event::listen($this->key($hook), function () use ($handlers) {
             return $handlers;
         });
     }
 
     /**
-     * Flattens the handlers because $handlers can be provided as array
+     * Flattens the handlers because $handlers can be provided as array.
      *
      * @param $hook
      * @return array
@@ -36,7 +37,6 @@ class LaravelHook extends Hook
             \Event::fire($this->key($hook))
         );
     }
-
 
     /**
      * @param $hook
@@ -53,7 +53,6 @@ class LaravelHook extends Hook
      */
     protected function key($hook)
     {
-        return $this->prepend . $hook;
+        return $this->prepend.$hook;
     }
-
 }
