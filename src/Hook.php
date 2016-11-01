@@ -47,7 +47,7 @@ class Hook
     }
 
     /**
-     * @param HookContract $handler
+     * @param HookContract|\Closure $handler
      * @param $data
      * @param $iterator
      * @return mixed
@@ -55,6 +55,10 @@ class Hook
      */
     protected function dispatchHandler($handler, $data, $iterator)
     {
+        if (is_callable($handler)) {
+            return $handler($data, $this->nextHandler($iterator));
+        }
+
         if (! is_object($handler)) {
             $handler = new $handler;
         }
